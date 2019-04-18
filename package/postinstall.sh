@@ -33,17 +33,19 @@
   sudo chmod 644 /lib/systemd/system/stenographer.service
   sudo chown -R root:stenographer /etc/stenographer/certs
   sudo chown root:stenographer /etc/stenographer/config
-  sudo chmod 644 /etc/stenographer/config
+  sudo chmod 664 /etc/stenographer/config
   sudo chmod -R 664 /etc/stenographer/certs
   sudo chown root:root /etc/stenographer
-  sudo chown root:stenographer ${BINDIR}/steno*
+  sudo chown root:root ${BINDIR}/steno*
   sudo chown root:root ${BINDIR}/stenoread
   sudo chmod 0775 ${BINDIR}/steno*
+  sudo chown stenographer:root ${BINDIR}/stenotype
+  sudo chown stenographer:root ${BINDIR}/stenographer
 
   PCAPDIR="/mnt/sda1/data/stenographer"
   mkdir -p "$PCAPDIR/IDX0"
   mkdir -p "$PCAPDIR/PKT0"
-  sudo chown -R root:stenographer ${BINDIR}/steno*
+  sudo chown -R stenographer:stenographer ${PCAPDIR}
   sudo chmod ugo+s /usr/bin/stenotype
 
   echo "Stenographer post-install complete!"
